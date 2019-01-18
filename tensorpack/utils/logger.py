@@ -76,7 +76,8 @@ def _set_file(path):
     global _FILE_HANDLER
     if os.path.isfile(path):
         backup_name = path + '.' + _get_time_str()
-        shutil.move(path, backup_name)
+        shutil.copy(path, backup_name)
+        #shutil.move(path, backup_name)
         _logger.info("Existing log file '{}' backuped to '{}'".format(path, backup_name))  # noqa: F821
     hdl = logging.FileHandler(
         filename=path, encoding='utf-8', mode='w')
